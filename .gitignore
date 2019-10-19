@@ -1,7 +1,9 @@
 */.vs/
 */x64/
+*/Debug/
+*/Release/
 */__pycache__/
 *.user
 *.pyc
-*/Debug/
-*/Release/
+*.suo
+*.opensdf
