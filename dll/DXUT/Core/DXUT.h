@@ -31,6 +31,7 @@
 #define _WIN32_WINNT   0x0600
 #endif
 
+// must be commented for Visual Studio 2010
 #pragma comment( lib, "legacy_stdio_definitions.lib" )
 
 // #define DXUT_AUTOLIB to automatically include the libs needed for DXUT 
