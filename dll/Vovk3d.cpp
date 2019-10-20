@@ -21,7 +21,7 @@
 
 #ifdef DEBUG
 #define debug_new new( _NORMAL_BLOCK, __FILE__, __LINE__)
-#elif
+#else
 #define debug_new new
 #endif // DEBUG
 
