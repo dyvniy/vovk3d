@@ -3,8 +3,8 @@
 
 #include "stdafx.h"
 #include "windows.h"
-#include "../interfaces/fordll.h"
-//#pragma comment(lib, "../shadowmap/Release/pyShadowMap.lib")
+#include "fordll.h"
+//#pragma comment(lib, "../sln/x64/Debug/Vovk3d.lib")
 
 int cb(double d, float f)
 {
