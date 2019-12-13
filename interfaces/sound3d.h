@@ -3,7 +3,7 @@
 
 #include "vector3d.h"
 
-interface ISound
+struct ISound
 {
 	bool SetPos(const IVector3d& pos);
 	bool Play(bool pause = false);

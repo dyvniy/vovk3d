@@ -2,12 +2,6 @@
 
 #include "sound3d.h"
 
-#ifdef DLL_EXPORTS
-#define DLL_API __declspec(dllexport)
-#else
-#define DLL_API __declspec(dllimport)
-#endif
-
 int WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int );
 int wndInitApp();
 int wndLoopApp();
@@ -33,7 +27,8 @@ extern "C" {
 	DLL_API int onDestroyCb(func_pointer_empty p);
 	// beforeCreate
 	DLL_API int addMesh(wchar_t filName[50], float matr[16]);
-	// onMove
+	DLL_API int setMatrix(int number, float matr[16]);
+		// onMove
 	DLL_API int rotateY(int idx, float mul);
 	DLL_API int rotateAxis(int idx, float mul, float v[3]);
 	// start application

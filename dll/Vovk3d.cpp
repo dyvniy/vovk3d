@@ -207,6 +207,13 @@ DLL_API int addMesh(wchar_t fileName[50], float matr[16])
 	int l = g_vwsMeshFile.size();
 	return g_vwsMeshFile.size();
 }
+
+DLL_API int setMatrix(int number, float matr[16]) {
+	D3DXMATRIXA16 *m = new D3DXMATRIXA16(matr);
+	delete g_vmInitObjWorld[number];
+	g_vmInitObjWorld[number] = m;
+	return number;
+}
 };
 
 //--------------------------------------------------------------------------------------
