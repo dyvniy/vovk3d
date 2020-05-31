@@ -37,4 +37,7 @@ extern "C" {
 	DLL_API int initApp();
 	DLL_API int loopApp();
 	DLL_API int closeApp();
+
+	DLL_API float* matrix(); // return float[16]
+	DLL_API int delarr(float* matr);
 };

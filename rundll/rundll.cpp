@@ -122,12 +122,26 @@ int ceBeforeCreate(int i)
 	for (int i=0; i<NUM_OBJ; ++i)
 		addMesh(aszMeshFile[i], &amInitObjWorld[16*i]);
 
-	float ma[16] = { 
+	float ma[16] = {
 		0.8f, 0.0f, 0.0f, 0.0f, // car
 		0.0f, 0.8f, 0.0f, 0.0f,
 		0.0f, 0.0f, 0.8f, 0.0f,
 		-14.5f, -5.1f, 0.0f, 1.0f , // flying (-7.1)
 	};
 	setMatrix(2, ma);
+
+	float matr[] = { 5.5f, 0.0f, 0.0f, 0.0f,
+					0.0f, 0.0f, 5.5f, 0.0f,
+					0.0f, -9.0f, 0.0f, 0.0f,
+					5.0f, 0.2f, -0.0f, 1.0f };
+	int arrId = addMesh(L"UI\\arrow.x", matr);
+	float ma2[16] = {
+		0.8f, 0.0f, 0.0f, 0.0f, // car
+		0.0f, 0.8f, 0.0f, 0.0f,
+		0.0f, 0.0f, 0.8f, 0.0f,
+		-14.5f, -5.1f, 0.0f, 1.0f , // flying (-7.1)
+	};
+	//setMatrix(arrId, ma2);
+
 	return 0;
 }

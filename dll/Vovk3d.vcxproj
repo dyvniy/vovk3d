@@ -31,13 +31,13 @@
     <ProjectGuid>{D3D0911D-96D0-4629-88B8-122C0256058C}</ProjectGuid>
     <RootNamespace>ShadowMap</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v140_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|X64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -426,9 +426,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fordll.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="dxut_ch.txt" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h" />

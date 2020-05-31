@@ -47,6 +47,14 @@ extern "C" {
 		return 0;
 	}
 	//////////////////////////////////////////////////////////////////////////
+
+	DLL_API float* matrix() {
+		return new float[16]{ 1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1 };
+	}
+	DLL_API int delarr(float* matr) {
+		delete[] matr;
+		return 0;
+	}
 };
 
 //BOOL APIENTRY DllMain( HMODULE hModule,

@@ -71,7 +71,6 @@
     <ClCompile Include="DXUT\Optional\SDKmisc.cpp">
       <Filter>DXUT</Filter>
     </ClCompile>
-    <None Include="dxut_ch.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fordll.cpp" />
