@@ -87,6 +87,9 @@ def run_callback():
     rundll = CDLL(dll_name).runApp
     rundll()
     
+    COnLost()
+    COnDestroy()
+    
 #'''
 
 '''    

@@ -45,10 +45,15 @@ D3DVERTEXELEMENT9 g_aVertDecl[] =
 //       with the mesh.
 //-----------------------------------------------------------------------------
 #pragma warning( disable : 4324 )
-struct CObj
+struct CMeshMatrObj
 {
     CDXUTXFileMesh m_Mesh;
     D3DXMATRIXA16 m_mWorld;
+    CMeshMatrObj() {}
+    CMeshMatrObj(CMeshMatrObj& x) {
+        m_Mesh = x.m_Mesh;
+        m_mWorld = m_mWorld;
+    }
 };
 
 
@@ -156,7 +161,7 @@ CDXUTDialog                     g_HUD;                  // dialog for standard c
 CFirstPersonCamera              g_VCamera;              // View camera
 CFirstPersonCamera              g_LCamera;              // Camera obj to help adjust light
 //CObj g_Obj[NUM_OBJ+10];         // Scene object meshes
-std::vector<CObj*> g_Obj;
+std::vector<std::shared_ptr<CMeshMatrObj> > g_Obj;
 IDirect3DVertexDeclaration9*    g_pVertDecl = NULL;// Vertex decl for the sample
 IDirect3DTexture9*              g_pTexDef = NULL;       // Default texture for objects
 D3DLIGHT9                       g_Light;                // The spot light in the scene
@@ -555,7 +560,7 @@ HRESULT CALLBACK OnCreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURFACE_
     // Initialize the meshes
 	for( int i = 0; i < g_vwsMeshFile.size(); ++i )
     {
-		g_Obj.push_back(debug_new CObj);
+		g_Obj.push_back(std::shared_ptr<CMeshMatrObj>(debug_new CMeshMatrObj));
 		V_RETURN( DXUTFindDXSDKMediaFileCch( str, MAX_PATH, g_vwsMeshFile[i].c_str() ) );
         if( FAILED( g_Obj[i]->m_Mesh.Create( pd3dDevice, str ) ) )
             return DXUTERR_MEDIANOTFOUND;
@@ -1137,8 +1142,11 @@ void CALLBACK OnLostDevice( void* pUserContext )
     SAFE_RELEASE( g_pShadowMap );
     SAFE_RELEASE( g_pTexDef );
 
-	for( int i = 0; i < g_vwsMeshFile.size(); ++i )
+    for (int i = 0; i < g_vwsMeshFile.size(); ++i) {
         g_Obj[i]->m_Mesh.InvalidateDeviceObjects();
+        //delete g_Obj[i];
+        //g_Obj[i] = 0;
+    }
     g_LightMesh.InvalidateDeviceObjects();
 
 	//func_pointer_empty 
@@ -1168,7 +1176,7 @@ void CALLBACK OnDestroyDevice( void* pUserContext )
 
 	for (int i = 0; i < g_vwsMeshFile.size(); ++i) {
 		g_Obj[i]->m_Mesh.Destroy();
-		SAFE_DELETE(g_Obj[i]);
+		//SAFE_DELETE(g_Obj[i]);
 	}
     g_LightMesh.Destroy();
 
