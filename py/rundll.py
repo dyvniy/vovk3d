@@ -1,4 +1,4 @@
-# -*- coding: cp1251 -*-
+﻿# -*- coding: utf-8 -*-
 # dll must be x64 if python 64 bit. 
 
 from ctypes import *

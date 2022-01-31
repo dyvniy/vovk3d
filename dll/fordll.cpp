@@ -3,6 +3,11 @@
 #define DLL_EXPORTS
 #include "../interfaces/fordll.h"
 
+#ifdef DEBUG
+#define debug_new new( _NORMAL_BLOCK, __FILE__, __LINE__)
+#else
+#define debug_new new
+#endif // DEBUG
 
 extern "C" {
 
@@ -49,7 +54,7 @@ extern "C" {
 	//////////////////////////////////////////////////////////////////////////
 
 	DLL_API float* matrix() {
-		return new float[16]{ 1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1 };
+		return debug_new float[16]{ 1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1 };
 	}
 	DLL_API int delarr(float* matr) {
 		delete[] matr;

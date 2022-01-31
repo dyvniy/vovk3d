@@ -2126,11 +2126,11 @@ HRESULT DXUTChangeDevice( DXUTDeviceSettings* pNewDeviceSettings,
     /// TODO: Understand, why does it need?
 
     // Make a copy of the pNewDeviceSettings on the heap 
-    //DXUTDeviceSettings* pNewDeviceSettingsOnHeap = new DXUTDeviceSettings;
-    //if( pNewDeviceSettingsOnHeap == NULL )
-    //    return E_OUTOFMEMORY;
-    //memcpy( pNewDeviceSettingsOnHeap, pNewDeviceSettings, sizeof( DXUTDeviceSettings ) );
-    //pNewDeviceSettings = pNewDeviceSettingsOnHeap;
+    DXUTDeviceSettings* pNewDeviceSettingsOnHeap = new DXUTDeviceSettings;
+    if( pNewDeviceSettingsOnHeap == NULL )
+        return E_OUTOFMEMORY;
+    memcpy( pNewDeviceSettingsOnHeap, pNewDeviceSettings, sizeof( DXUTDeviceSettings ) );
+    pNewDeviceSettings = pNewDeviceSettingsOnHeap;
 
     // If the ModifyDeviceSettings callback is non-NULL, then call it to let the app 
     // change the settings or reject the device change by returning false.
