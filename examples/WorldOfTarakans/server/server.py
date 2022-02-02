@@ -3,6 +3,11 @@
 import tornado.ioloop
 import tornado.web
 
+import database
+
+db = database.DbManager()
+db.init()
+
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.write("Hello, world")
