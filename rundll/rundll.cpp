@@ -63,6 +63,7 @@ int ceBeforeCreate(int i)
 		//L"UI\\arrow.x",
 		L"ring.x",
 		L"ring.x",
+		L"plane.x"
 	};
 
 	#define NUM_OBJ (sizeof(aszMeshFile)/sizeof(aszMeshFile[0]))
@@ -121,10 +122,14 @@ int ceBeforeCreate(int i)
 					0.0f, 0.9f, 0.0f, 0.0f, 
 					0.0f, 0.0f, 0.9f, 0.0f, 
 					-14.5f, -9.0f, 0.0f, 1.0f ,
-     0.9f, 0.0f, 0.0f, 0.0f, 
-					0.0f, 0.9f, 0.0f, 0.0f, 
-					0.0f, 0.0f, 0.9f, 0.0f, 
+	 0.9f, 0.0f, 0.0f, 0.0f,
+					0.0f, 0.9f, 0.0f, 0.0f,
+					0.0f, 0.0f, 0.9f, 0.0f,
 					14.5f, -9.0f, 0.0f, 1.0f ,
+	 0.9f, 0.0f, 0.0f, 0.0f,
+					0.0f, 0.9f, 0.0f, 0.0f,
+					0.0f, 0.0f, 0.9f, 0.0f,
+					1.0f, 0.0f, 0.0f, 1.0f ,
 	};
 	for (int i=0; i<NUM_OBJ; ++i)
 		addMesh(aszMeshFile[i], &amInitObjWorld[16*i]);
