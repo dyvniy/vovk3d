@@ -63,7 +63,7 @@ int ceBeforeCreate(int i)
 		//L"UI\\arrow.x",
 		L"ring.x",
 		L"ring.x",
-		L"plane.x"
+		L"divanovka.x"
 	};
 
 	#define NUM_OBJ (sizeof(aszMeshFile)/sizeof(aszMeshFile[0]))
