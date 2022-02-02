@@ -203,7 +203,7 @@ DLL_API int onRenderCb(func_pointer_render p){onRenderPy = p;return 0;}
 DLL_API int onLostCb(func_pointer_empty p){onLostPy = p; return 0;}
 DLL_API int onDestroyCb(func_pointer_empty p){onDestroyPy = p; return 0;}
 
-DLL_API int addMesh(wchar_t fileName[50], float matr[16])
+DLL_API int addMesh(wchar_t fileName[50], const float matr[16])
 {
 	std::wstring s(fileName);
 	g_vwsMeshFile.push_back(s);

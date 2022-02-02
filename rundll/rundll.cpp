@@ -41,8 +41,25 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;
 }
 
+struct PyMesh {
+	wchar_t* namepath;
+	float matr[16];
+};
+
 int ceBeforeCreate(int i)
 {
+	const PyMesh meshes[] = {
+		PyMesh {
+			L"divanovka.x",
+			{
+				0.9f, 0.0f, 0.0f, 0.0f,
+				0.0f, 0.9f, 0.0f, 0.0f,
+				0.0f, 0.0f, 0.9f, 0.0f,
+				1.0f, 0.0f, 0.0f, 1.0f
+			}
+		}
+	};
+
 	printf("beforeCreate %i\n",i);
 	wchar_t* aszMeshFile[] =
 	{
@@ -62,8 +79,8 @@ int ceBeforeCreate(int i)
 		//L"UI\\arrow.x",
 		//L"UI\\arrow.x",
 		L"ring.x",
-		L"ring.x",
-		L"divanovka.x"
+		L"ring.x"
+		//L"divanovka.x"
 	};
 
 	#define NUM_OBJ (sizeof(aszMeshFile)/sizeof(aszMeshFile[0]))
@@ -126,13 +143,15 @@ int ceBeforeCreate(int i)
 					0.0f, 0.9f, 0.0f, 0.0f,
 					0.0f, 0.0f, 0.9f, 0.0f,
 					14.5f, -9.0f, 0.0f, 1.0f ,
-	 0.9f, 0.0f, 0.0f, 0.0f,
-					0.0f, 0.9f, 0.0f, 0.0f,
-					0.0f, 0.0f, 0.9f, 0.0f,
-					1.0f, 0.0f, 0.0f, 1.0f ,
+	 //0.9f, 0.0f, 0.0f, 0.0f,
+		//			0.0f, 0.9f, 0.0f, 0.0f,
+		//			0.0f, 0.0f, 0.9f, 0.0f,
+		//			1.0f, 0.0f, 0.0f, 1.0f ,
 	};
 	for (int i=0; i<NUM_OBJ; ++i)
 		addMesh(aszMeshFile[i], &amInitObjWorld[16*i]);
+	
+	addMesh(meshes[0].namepath, meshes[0].matr);
 
 	float ma[16] = {
 		0.8f, 0.0f, 0.0f, 0.0f, // car
