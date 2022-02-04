@@ -203,7 +203,7 @@ DLL_API int onRenderCb(func_pointer_render p){onRenderPy = p;return 0;}
 DLL_API int onLostCb(func_pointer_empty p){onLostPy = p; return 0;}
 DLL_API int onDestroyCb(func_pointer_empty p){onDestroyPy = p; return 0;}
 
-DLL_API int addMesh(wchar_t fileName[50], const float matr[16])
+DLL_API int addMesh(const wchar_t fileName[50], const float matr[16])
 {
 	std::wstring s(fileName);
 	g_vwsMeshFile.push_back(s);
@@ -213,7 +213,7 @@ DLL_API int addMesh(wchar_t fileName[50], const float matr[16])
 	return g_vwsMeshFile.size();
 }
 
-DLL_API int setMatrix(int number, float matr[16]) {
+DLL_API int setMatrix(int number, const float matr[16]) {
 	D3DXMATRIXA16 *m = new D3DXMATRIXA16(matr);
 	delete g_vmInitObjWorld[number];
 	g_vmInitObjWorld[number] = m;

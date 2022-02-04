@@ -50,6 +50,51 @@ int ceBeforeCreate(int i)
 {
 	const PyMesh meshes[] = {
 		PyMesh {
+			L"room.x",
+			{
+				3.5f, 0.0f, 0.0f, 0.0f, //room
+				0.0f, 3.0f, 0.0f, 0.0f,
+				0.0f, 0.0f, 3.5f, 0.0f,
+				0.0f, 0.0f, 0.0f, 1.0f
+			}
+		},
+		PyMesh {
+			L"airplane\\airplane 2.x",
+			{
+				0.43301f, 0.25f, 0.0f, 0.0f, //airplane
+				-0.25f, 0.43301f, 0.0f, 0.0f,
+				0.0f, 0.0f, 0.5f, 0.0f,
+				5.0f, 1.33975f, 0.0f, 1.0f
+			}
+		},
+		PyMesh {
+			L"misc\\car.x",
+			{
+				0.8f, 0.0f, 0.0f, 0.0f, // car
+				0.0f, 0.8f, 0.0f, 0.0f, 
+				0.0f, 0.0f, 0.8f, 0.0f, 
+				-14.5f, -7.1f, 0.0f,1.0f 
+			}
+		},
+		PyMesh{
+			L"misc\\sphere.x",
+			{
+				2.0f, 0.0f, 0.0f, 0.0f, // sphere
+				0.0f, 2.0f, 0.0f, 0.0f, 
+				0.0f, 0.0f, 2.0f, 0.0f, 
+				0.0f, -7.0f, 0.0f,1.0f ,
+			}
+		},
+		PyMesh{
+			L"UI\\arrow.x",
+			{
+				5.5f, 0.0f, 0.0f, 0.0f, // arrow1
+				0.0f, 0.0f, 5.5f, 0.0f,
+				0.0f, -9.0f, 0.0f, 0.0f,
+				5.0f, 0.2f, 5.0f, 1.0f ,
+			}
+		},
+		PyMesh {
 			L"divanovka.x",
 			{
 				0.9f, 0.0f, 0.0f, 0.0f,
@@ -60,118 +105,30 @@ int ceBeforeCreate(int i)
 		}
 	};
 
-	printf("beforeCreate %i\n",i);
-	wchar_t* aszMeshFile[] =
-	{
-		L"room.x",
-		L"airplane\\airplane 2.x",
-		L"misc\\car.x",
-		L"misc\\sphere.x",
-		L"UI\\arrow.x",
-		L"UI\\arrow.x",
-		//L"UI\\arrow.x",
-		////L"UI\\arrow.x",
-		//L"UI\\arrow.x",
-		//L"UI\\arrow.x",
-		//L"UI\\arrow.x",
-		//L"UI\\arrow.x",
-		//L"UI\\arrow.x",
-		//L"UI\\arrow.x",
-		//L"UI\\arrow.x",
-		L"ring.x",
-		L"ring.x"
-		//L"divanovka.x"
-	};
+	#define NUM_MESH (sizeof(meshes)/sizeof(meshes[0]))
 
-	#define NUM_OBJ (sizeof(aszMeshFile)/sizeof(aszMeshFile[0]))
+	for (int i=0; i< NUM_MESH; ++i)
+		addMesh(meshes[i].namepath, meshes[i].matr);
 
-	float amInitObjWorld[] =
-	{
-    	3.5f, 0.0f, 0.0f, 0.0f, //room
-					0.0f, 3.0f, 0.0f, 0.0f, 
-					0.0f, 0.0f, 3.5f, 0.0f, 
-					0.0f, 0.0f, 0.0f, 1.0f ,
-      0.43301f, 0.25f, 0.0f, 0.0f, //airplane
-					-0.25f, 0.43301f, 0.0f, 0.0f, 
-					0.0f, 0.0f, 0.5f, 0.0f, 
-					5.0f, 1.33975f, 0.0f, 1.0f ,
-      0.8f, 0.0f, 0.0f, 0.0f, // car
-					0.0f, 0.8f, 0.0f, 0.0f, 
-					0.0f, 0.0f, 0.8f, 0.0f, 
-					-14.5f, -7.1f, 0.0f,1.0f ,
-      2.0f, 0.0f, 0.0f, 0.0f, // sphere
-					0.0f, 2.0f, 0.0f, 0.0f, 
-					0.0f, 0.0f, 2.0f, 0.0f, 
-					0.0f, -7.0f, 0.0f,1.0f ,
-     5.5f, 0.0f, 0.0f, 0.0f, // arrow1
-					0.0f, 0.0f, 5.5f, 0.0f, 
-					0.0f, -9.0f, 0.0f, 0.0f, 
-					5.0f, 0.2f, 5.0f, 1.0f ,
-     5.5f, 0.0f, 0.0f, 0.0f, 
-					0.0f, 0.0f, 5.5f, 0.0f, 
-					0.0f, -9.0f, 0.0f, 0.0f, 
-					5.0f, 0.2f, -5.0f, 1.0f ,
-     //5.5f, 0.0f, 0.0f, 0.0f, 
-					//0.0f, 0.0f, 5.5f, 0.0f, 
-					//0.0f, -9.0f, 0.0f, 0.0f, 
-					//-5.0f, 0.2f, 5.0f, 1.0f ,
-     //5.5f, 0.0f, 0.0f, 0.0f, 
-					//0.0f, 0.0f, 5.5f, 0.0f, 
-					//0.0f, -9.0f, 0.0f, 0.0f, 
-					//-5.0f, 0.2f, -5.0f, 1.0f ,
-     //5.5f, 0.0f, 0.0f, 0.0f, 
-					//0.0f, 0.0f, 5.5f, 0.0f, 
-					//0.0f, -9.0f, 0.0f, 0.0f, 
-					//14.0f, 0.2f, 14.0f,1.0f ,
-     //5.5f, 0.0f, 0.0f, 0.0f, 
-					//0.0f, 0.0f, 5.5f, 0.0f, 
-					//0.0f, -9.0f, 0.0f, 0.0f, 
-					//14.0f, 0.2f, -14.0f, 1.0f ,
-     //5.5f, 0.0f, 0.0f, 0.0f, 
-					//0.0f, 0.0f, 5.5f, 0.0f, 
-					//0.0f, -9.0f, 0.0f, 0.0f, 
-					//-14.0f, 0.2f, 14.0f, 1.0f ,
-     //5.5f, 0.0f, 0.0f, 0.0f, 
-					//0.0f, 0.0f, 5.5f, 0.0f, 
-					//0.0f, -9.0f, 0.0f, 0.0f, 
-					//-14.0f, 0.2f, -14.0f, 1.0f ,
-     0.9f, 0.0f, 0.0f, 0.0f, 
-					0.0f, 0.9f, 0.0f, 0.0f, 
-					0.0f, 0.0f, 0.9f, 0.0f, 
-					-14.5f, -9.0f, 0.0f, 1.0f ,
-	 0.9f, 0.0f, 0.0f, 0.0f,
-					0.0f, 0.9f, 0.0f, 0.0f,
-					0.0f, 0.0f, 0.9f, 0.0f,
-					14.5f, -9.0f, 0.0f, 1.0f ,
-	 //0.9f, 0.0f, 0.0f, 0.0f,
-		//			0.0f, 0.9f, 0.0f, 0.0f,
-		//			0.0f, 0.0f, 0.9f, 0.0f,
-		//			1.0f, 0.0f, 0.0f, 1.0f ,
-	};
-	for (int i=0; i<NUM_OBJ; ++i)
-		addMesh(aszMeshFile[i], &amInitObjWorld[16*i]);
-	
-	addMesh(meshes[0].namepath, meshes[0].matr);
+	//float ma[16] = {
+	//	0.8f, 0.0f, 0.0f, 0.0f, // car
+	//	0.0f, 0.8f, 0.0f, 0.0f,
+	//	0.0f, 0.0f, 0.8f, 0.0f,
+	//	-14.5f, -5.1f, 0.0f, 1.0f , // flying (-7.1)
+	//};
+	//setMatrix(2, ma);
 
-	float ma[16] = {
-		0.8f, 0.0f, 0.0f, 0.0f, // car
-		0.0f, 0.8f, 0.0f, 0.0f,
-		0.0f, 0.0f, 0.8f, 0.0f,
-		-14.5f, -5.1f, 0.0f, 1.0f , // flying (-7.1)
-	};
-	setMatrix(2, ma);
-
-	float matr[] = { 5.5f, 0.0f, 0.0f, 0.0f,
-					0.0f, 0.0f, 5.5f, 0.0f,
-					0.0f, -9.0f, 0.0f, 0.0f,
-					5.0f, 0.2f, -0.0f, 1.0f };
-	int arrId = addMesh(L"UI\\arrow.x", matr);
-	float ma2[16] = {
-		0.8f, 0.0f, 0.0f, 0.0f, // car
-		0.0f, 0.8f, 0.0f, 0.0f,
-		0.0f, 0.0f, 0.8f, 0.0f,
-		-14.5f, -5.1f, 0.0f, 1.0f , // flying (-7.1)
-	};
+	//float matr[] = { 5.5f, 0.0f, 0.0f, 0.0f,
+	//				0.0f, 0.0f, 5.5f, 0.0f,
+	//				0.0f, -9.0f, 0.0f, 0.0f,
+	//				5.0f, 0.2f, -0.0f, 1.0f };
+	//int arrId = addMesh(L"UI\\arrow.x", matr);
+	//float ma2[16] = {
+	//	0.8f, 0.0f, 0.0f, 0.0f, // car
+	//	0.0f, 0.8f, 0.0f, 0.0f,
+	//	0.0f, 0.0f, 0.8f, 0.0f,
+	//	-14.5f, -5.1f, 0.0f, 1.0f , // flying (-7.1)
+	//};
 	//setMatrix(arrId, ma2);
 
 	return 0;

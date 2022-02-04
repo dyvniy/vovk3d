@@ -26,8 +26,8 @@ extern "C" {
 	DLL_API int onLostCb(func_pointer_empty p);
 	DLL_API int onDestroyCb(func_pointer_empty p);
 	// beforeCreate
-	DLL_API int addMesh(wchar_t filName[50], const float matr[16]);
-	DLL_API int setMatrix(int number, float matr[16]);
+	DLL_API int addMesh(const wchar_t filName[50], const float matr[16]);
+	DLL_API int setMatrix(int number, const float matr[16]);
 		// onMove
 	DLL_API int rotateY(int idx, float mul);
 	DLL_API int rotateAxis(int idx, float mul, float v[3]);
