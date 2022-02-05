@@ -166,7 +166,11 @@ const int D3DX_PI = 3.141592f;
 int ceOnMove(double fTime, float fElapsedTime)
 {
 	rotateY(meshd[L"divanovka.x"].index, fElapsedTime);
-	printf("%f \t", fTime);
+	static float last_time = fTime;
+	if (abs(last_time - fTime) > 1) {
+		printf("%f \t", fTime);
+		last_time = fTime;
+	}
 	//rotateY(1, D3DX_PI * fElapsedTime / 4.0f);
 	//rotateY(2, -D3DX_PI * fElapsedTime / 4.0f);
 	//float v[] = { 0.1f, 1.0f, -0.2f };

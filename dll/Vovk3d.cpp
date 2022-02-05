@@ -745,7 +745,7 @@ void RenderScene( IDirect3DDevice9* pd3dDevice, bool bRenderShadow, float fElaps
         D3DXVec3Normalize( ( D3DXVECTOR3* )&v4, ( D3DXVECTOR3* )&v4 );
         V( g_pEffect->SetVector( "g_vLightDir", &v4 ) );
     }
-    else
+    else if (g_Obj.size() > 2)
     {
         // Light attached to car.  Get the car's world position and direction.
         D3DXMATRIXA16 m = g_Obj[2]->m_mWorld;
@@ -878,7 +878,7 @@ void CALLBACK OnFrameRender( IDirect3DDevice9* pd3dDevice, double fTime, float f
     D3DXMATRIXA16 mLightView;
     if( g_bFreeLight )
         mLightView = *g_LCamera.GetViewMatrix();
-    else
+    else if (g_Obj.size() > 2)
     {
         // Light attached to car.          <<<<
         mLightView = g_Obj[2]->m_mWorld;
