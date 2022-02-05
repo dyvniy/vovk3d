@@ -90,10 +90,11 @@ def main(dll_name):
                    -14.5, -9.0, 0.0, 1.0 )
     ]
     i=0
+    '''
     for mesh in meshFile:
         fnAddMesh(mesh, mInitMatrWorld[i])
         print(i)
         i = i+1
-
+    '''
 
         
