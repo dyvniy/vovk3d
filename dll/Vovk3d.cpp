@@ -712,11 +712,7 @@ void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext 
     // Animate the plane, car and sphere meshes
     D3DXMATRIXA16 m;
 
-	rotateY(1, D3DX_PI * fElapsedTime / 4.0f); 
-    rotateY(2, -D3DX_PI * fElapsedTime / 4.0f );
-	float v[] = {0.1f, 1.0f, -0.2f};
-	rotateAxis(3, -D3DX_PI * fElapsedTime / 6.0f, v);
-    rotateY(4, -D3DX_PI * fElapsedTime / 4.0f );
+    // rotation!!!
 
 	onMovePy(fTime, fElapsedTime);
 }
