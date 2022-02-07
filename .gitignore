@@ -7,6 +7,4 @@
 *.pyc
 *.suo
 *.opensdf
-hooks/
-lfs/
 examples/WorldOfTarakans/server/tarakans.db

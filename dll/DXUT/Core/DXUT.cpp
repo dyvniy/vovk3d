@@ -621,7 +621,7 @@ bool DXUTGetCmdParam( __inout WCHAR*& strCmdLine, __out WCHAR* strFlag );
 void DXUTAllowShortcutKeys( bool bAllowKeys );
 void DXUTUpdateStaticFrameStats();
 void DXUTUpdateFrameStats();
-void DXUTUpdateD3D10PipelineStats();
+//void DXUTUpdateD3D10PipelineStats();
 LRESULT CALLBACK DXUTStaticWndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
 void DXUTHandleTimers();
 void DXUTDisplayErrorMessage( HRESULT hr );
