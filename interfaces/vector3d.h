@@ -7,26 +7,18 @@
 #endif
 
 struct IVector4d {
+	double v[4];
+	// types
 	struct v2 { double v[2]; };
 	struct v3 { double v[3]; };
-	struct v4 { double v[4]; };
-	double& x();
-	double& y();
-	double& z();
-	double& w();
-	v2& xy();
-	v2& xz();
-	v3& xyz();
-	v4& xyzw();
+	// methods
+	virtual double& x() { return v[0]; };
+	virtual double& y() { return v[1]; };
+	virtual double& z() { return v[2]; };
+	virtual double& w() { return v[3]; };
+	virtual v2& xy();
+	virtual v2& xz();
+	virtual v2& yz();
+	virtual v3& xyz();
+	virtual IVector4d& xyzw();
 };
-
-struct IVector3d {
-	double& x();
-	double& y();
-	double& z();
-	IVector4d::v2& xy();
-	IVector4d::v2& xz();
-	IVector4d::v3& xyz();
-};
-
-

@@ -161,12 +161,12 @@ int ceBeforeCreate(int i)
 	return 0;
 }
 
-const int D3DX_PI = 3.141592f;
+const double D3DX_PI = 3.141592653;
 
 int ceOnMove(double fTime, float fElapsedTime)
 {
 	rotateY(meshd[L"divanovka.x"].index, fElapsedTime);
-	static float last_time = fTime;
+	static double last_time = fTime;
 	if (abs(last_time - fTime) > 1) {
 		printf("%f \t", fTime);
 		last_time = fTime;

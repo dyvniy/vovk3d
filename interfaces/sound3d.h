@@ -5,8 +5,9 @@
 
 struct ISound
 {
-	bool SetPos(const IVector3d& pos);
-	bool Play(bool pause = false);
+	virtual bool SetPos(const IVector4d& pos) = 0;
+	virtual bool Play(bool pause = false) = 0;
+	virtual bool Load(char* path) = 0;
 };
 
 #define SOUND_H
