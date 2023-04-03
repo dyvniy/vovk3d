@@ -25,9 +25,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "itf", "itf", "{88B80130-CFDA-4AE5-92C6-D2715A534F55}"
 	ProjectSection(SolutionItems) = preProject
 		..\interfaces\fordll.h = ..\interfaces\fordll.h
+		..\interfaces\g_Screen.h = ..\interfaces\g_Screen.h
+		..\interfaces\g_World.h = ..\interfaces\g_World.h
 		..\interfaces\matrix4x4.h = ..\interfaces\matrix4x4.h
-		..\interfaces\sound3d.h = ..\interfaces\sound3d.h
-		..\interfaces\vector3d.h = ..\interfaces\vector3d.h
+		..\interfaces\sound4d.h = ..\interfaces\sound4d.h
+		..\interfaces\vector4d.h = ..\interfaces\vector4d.h
 	EndProjectSection
 EndProject
 Global

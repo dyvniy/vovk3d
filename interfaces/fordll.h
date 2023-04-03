@@ -1,6 +1,7 @@
 #pragma once
 
-#include "sound3d.h"
+#include "sound4d.h"
+#include "g_Screen.h"
 
 int WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int );
 int wndInitApp();
