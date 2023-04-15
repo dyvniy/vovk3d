@@ -1,0 +1,11 @@
+# vim specific stuff
+compile_commands.json
+.cache/
+
+.vscode/
+.misc/
+bin/
+obj/
+redirects/
+
+.ccls-cache/

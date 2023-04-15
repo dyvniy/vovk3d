@@ -10,6 +10,7 @@
 #include "DXUTsettingsdlg.h"
 #include "SDKmisc.h"
 #include "SDKmesh.h"
+#include "audio.h"
 #include "resource.h"
 
 //#define DEBUG_VS   // Uncomment this line to debug vertex shaders 
@@ -356,6 +357,13 @@ INT wndLoopApp()
 INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
 {
 	wndInitApp();
+
+    HRESULT hr = InitAudio();
+    if (FAILED(hr))
+    {
+        OutputDebugString(L"InitAudio() failed.  Disabling audio support\n");
+    }
+
 
 	return wndLoopApp();
 }

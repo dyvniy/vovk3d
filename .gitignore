@@ -8,3 +8,5 @@
 *.suo
 *.opensdf
 examples/WorldOfTarakans/server/tarakans.db
+Samples
+lfs

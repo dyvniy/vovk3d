@@ -75,11 +75,19 @@
   <ItemGroup>
     <ClCompile Include="fordll.cpp" />
     <ClCompile Include="Vovk3d.cpp" />
+    <ClCompile Include="audio.cpp" />
+    <ClCompile Include="DXUT\Optional\SDKwavefile.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
       <Filter>Resource Files</Filter>
     </CLInclude>
+    <ClInclude Include="audio.h" />
+    <ClInclude Include="DXUT\Optional\SDKwavefile.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\shaders\ShadowMap.fx">
