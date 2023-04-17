@@ -179,6 +179,8 @@ bool                            g_bFreeLight = true;    // Whether the light is 
 bool							g_WindowClosed = false;
 bool g_destroyBeforeReset = true;
 
+const float                     MOTION_SCALE = 3.0f;
+
 std::vector<std::wstring> g_vwsMeshFile;
 std::vector<D3DXMATRIXA16*> g_vmInitObjWorld;
 
@@ -196,31 +198,39 @@ func_pointer_empty onLostPy		= fpe;
 func_pointer_empty onDestroyPy	= fpe;
 
 extern "C" {
-DLL_API int beforeCreateCb(func_pointer_empty p){ beforeCreatePy = p;return 0;}
-DLL_API int onCreateCb(func_pointer_empty p){ onCreatePy = p;return 0;}
-DLL_API int onResetCb(func_pointer_empty p){onResetPy = p; return 0;}
-DLL_API int onMoveCb(func_pointer_render p){onMovePy = p;return 0;}
-DLL_API int onRenderCb(func_pointer_render p){onRenderPy = p;return 0;}
-DLL_API int onLostCb(func_pointer_empty p){onLostPy = p; return 0;}
-DLL_API int onDestroyCb(func_pointer_empty p){onDestroyPy = p; return 0;}
+    DLL_API int beforeCreateCb(func_pointer_empty p) { beforeCreatePy = p; return 0; }
+    DLL_API int onCreateCb(func_pointer_empty p) { onCreatePy = p; return 0; }
+    DLL_API int onResetCb(func_pointer_empty p) { onResetPy = p; return 0; }
+    DLL_API int onMoveCb(func_pointer_render p) { onMovePy = p; return 0; }
+    DLL_API int onRenderCb(func_pointer_render p) { onRenderPy = p; return 0; }
+    DLL_API int onLostCb(func_pointer_empty p) { onLostPy = p; return 0; }
+    DLL_API int onDestroyCb(func_pointer_empty p) { onDestroyPy = p; return 0; }
 
-DLL_API int addMesh(const wchar_t fileName[50], const float matr[16])
-{
-	std::wstring s(fileName);
-	g_vwsMeshFile.push_back(s);
-	D3DXMATRIXA16 *m = new D3DXMATRIXA16(matr);
-	g_vmInitObjWorld.push_back(m);
-	int l = g_vwsMeshFile.size();
-	return g_vwsMeshFile.size();
-}
+    DLL_API int addMesh(const wchar_t fileName[50], const float matr[16])
+    {
+        std::wstring s(fileName);
+        g_vwsMeshFile.push_back(s);
+        D3DXMATRIXA16* m = new D3DXMATRIXA16(matr);
+        g_vmInitObjWorld.push_back(m);
+        int l = g_vwsMeshFile.size();
+        return g_vwsMeshFile.size();
+    }
 
-DLL_API int setMatrix(int number, const float matr[16]) {
-	D3DXMATRIXA16 *m = new D3DXMATRIXA16(matr);
-	delete g_vmInitObjWorld[number];
-	g_vmInitObjWorld[number] = m;
-	return number;
-}
+    DLL_API int setMatrix(int number, const float matr[16]) {
+        D3DXMATRIXA16* m = new D3DXMATRIXA16(matr);
+        delete g_vmInitObjWorld[number];
+        g_vmInitObjWorld[number] = m;
+        return number;
+    }
+
+    DLL_API void SoundInit() { InitAudio(); }
+    //HRESULT PrepareAudio(const LPWSTR wavname);
+    //HRESULT UpdateAudio(float fElapsedTime);
+    //HRESULT SetReverb(int nReverb);
+    //VOID PauseAudio(bool resume);
+    //VOID CleanupAudio();
 };
+
 
 //--------------------------------------------------------------------------------------
 // UI control IDs
@@ -354,6 +364,11 @@ INT wndLoopApp()
 // Entry point to the program. Initializes everything and goes into a message processing 
 // loop. Idle time is used to render the scene.
 //--------------------------------------------------------------------------------------
+//_In_ HINSTANCE hInstance,
+//_In_opt_ HINSTANCE hPrevInstance,
+//_In_ LPWSTR lpCmdLine,
+//_In_ int nShowCmd
+
 INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
 {
 	wndInitApp();
@@ -363,6 +378,12 @@ INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
     {
         OutputDebugString(L"InitAudio() failed.  Disabling audio support\n");
     }
+    hr = PrepareAudio(L"Heli.wav");
+    if (FAILED(hr))
+    {
+        OutputDebugString(L"PrepareAudio() failed\n");
+    }
+    g_audioState.vListenerPos = D3DXVECTOR3(10.0, 0.0, 0.0);
 
 
 	return wndLoopApp();
@@ -723,6 +744,17 @@ void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext 
     // rotation!!!
 
 	onMovePy(fTime, fElapsedTime);
+
+    // sound
+    if (fElapsedTime > 0)
+    {
+        D3DXVECTOR3* vec = &g_audioState.vListenerPos;
+
+        vec->z = sin(fElapsedTime) * MOTION_SCALE;
+        vec->x = cos(fElapsedTime) * MOTION_SCALE;
+    }
+
+    UpdateAudio(fElapsedTime);
 }
 
 

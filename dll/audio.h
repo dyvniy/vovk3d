@@ -78,8 +78,15 @@ HRESULT SetReverb( int nReverb );
 VOID PauseAudio( bool resume );
 VOID CleanupAudio();
 
-class Sound3d
+// #include "sound4d.h"
+
+
+class Sound3d //: public ISound
 {
+    /*
+    D3DXVECTOR3 vListenerPos;
+    D3DXVECTOR3 vEmitterPos;
+    */
     AUDIO_STATE  m_audioState;
     HRESULT res;
 public:
@@ -98,4 +105,16 @@ public:
     { return res = SetReverb(nReverb); }
     VOID PauseAudio(bool resume) 
     { PauseAudio(resume); }
+
+    // interface ISound
+    //virtual bool SetEmitterPos(const IVector4d& pos) {
+    //    m_audioState.vEmitterPos = D3DXVECTOR3(pos.v[0], pos.v[1], pos.v[2]);
+    //    return true;
+    //}
+    //virtual bool SetListenerPos(const IVector4d& pos) {
+    //    m_audioState.vListenerPos = D3DXVECTOR3(pos.v[0], pos.v[1], pos.v[2]);
+    //    return false;
+    //}
+    //virtual bool Play(bool pause = false) { PauseAudio(!pause); }
+    //virtual bool Load(const LPWSTR path) { PrepareAudio(path); }
 };

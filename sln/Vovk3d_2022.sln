@@ -30,6 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "itf", "itf", "{88B80130-CFD
 		..\interfaces\matrix4x4.h = ..\interfaces\matrix4x4.h
 		..\interfaces\singleton0.h = ..\interfaces\singleton0.h
 		..\interfaces\sound4d.h = ..\interfaces\sound4d.h
+		TextFile1.txt = TextFile1.txt
 		..\interfaces\vector4d.h = ..\interfaces\vector4d.h
 	EndProjectSection
 EndProject
