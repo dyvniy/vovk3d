@@ -5,6 +5,7 @@
 #include "windows.h"
 #include "fordll.h"
 //#pragma comment(lib, "../sln/x64/Debug/Vovk3d.lib")
+#include <string>
 
 #include <unordered_map>
 

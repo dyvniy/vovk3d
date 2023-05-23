@@ -86,7 +86,7 @@ HRESULT InitAudio()
 
     UINT32 flags = 0;
 #ifdef _DEBUG
-    flags |= XAUDIO2_DEBUG_ENGINE;
+    // flags |= XAUDIO2_DEBUG_ENGINE;  // not works in vs2022
 #endif
 
     HRESULT hr;

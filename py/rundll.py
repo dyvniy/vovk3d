@@ -43,8 +43,8 @@ def onDestroy(i):
 
 #===========================================
 def namePath():
-    return u'./sln/x64/Debug/Vovk3d.dll'
-    #return u'./Release/pyShadowMap.dll'
+    #return u'./sln/x64/Debug/Vovk3d.dll'
+    return u'./sln/x64/Release/Vovk3d.dll'
 
 def run_callback():
     os.chdir('..')
@@ -92,22 +92,22 @@ def run_callback():
     
 #'''
 
-'''    
+#'''
 def user_array():
     intArray5 = c_int * 5
     ia = intArray5(1,2,3,4,5)
-    print ia
-    print ia[3]
+    print(ia)
+    print(ia[3])
 
 def string_array():
-    string = c_char * 50
+    string = c_wchar * 50
     modelNameArray = string * 2
-    mna = modelNameArray(string(*"12"), string(*"khgkhjj"))
-    print mna[1][3]
-    print len(mna[0])
-    print ord(mna[0][9])
+    mna = modelNameArray(string(*"12",), string(*"khgkhjj",))
+    print(mna[1][3])
+    print(len(mna[0]))
+    print(ord(mna[0][9]))
 
-#main_callback()
-#string_array()
-'''
+user_array()
+string_array()
+#'''
 run_callback()
